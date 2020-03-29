@@ -14,9 +14,15 @@ int main(int argc, char** argv)
 	
 	Mat img_bw = manGray > 120;
 	
-	namedWindow("Test");
+	namedWindow("Test", WINDOW_NORMAL);
+	namedWindow("Test2", WINDOW_NORMAL);
+	namedWindow("Test3", WINDOW_NORMAL);
 	threshold(manGray, img_bw, 0, 255, THRESH_BINARY | THRESH_OTSU);
-	pyrMeanShiftFiltering(manRGB, test, 5,10);
+	pyrMeanShiftFiltering(manRGB, test, 10,10);
+	resizeWindow("Test", 300, 300);
+	resizeWindow("Test2", 300, 300);
 	imshow("Test", test);
+	imshow("Test2", img_bw);
+	imshow("Test3", manRGB);
 	waitKey(0);
 }
